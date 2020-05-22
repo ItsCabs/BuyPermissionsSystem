@@ -1,0 +1,5 @@
+name: BuyPermissionsSystem
+version: 1.0.0
+author: ProgrammingPanda
+main: de.programmingpanda.buypermssystem.MainActivity
+commands:
