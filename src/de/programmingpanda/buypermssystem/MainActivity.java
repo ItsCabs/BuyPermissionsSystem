@@ -2,21 +2,32 @@ package de.programmingpanda.buypermssystem;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-import net.luckperms.api.LuckPerms;
-import net.luckperms.api.LuckPermsProvider;
+import de.programmingpanda.buypermssystem.commands.ReloadPermissionsCommand;
+import de.programmingpanda.buypermssystem.manager.FileManager;
+import de.programmingpanda.buypermssystem.utils.Inventorys;
 
 public class MainActivity extends JavaPlugin {
 
 	private static MainActivity instance;
-	private static LuckPerms luckPermsAPI = LuckPermsProvider.get();
-	
+
 	public void onEnable() {
+		System.out.println("[BuyPermissionsSystem] Plugin has started successfully!");
+		System.out.println("[BuyPermissionsSystem] and was made with love by Paandaa.");
+
 		instance = this;
-		luckPermsAPI.getUserManager().getUser("lol");
+		addCommands();
+		FileManager.buildFile();
+		Inventorys.build();
+
 	}
 
 	public static MainActivity getInstance() {
 		return instance;
 	}
-	
+
+	private void addCommands() {
+		getCommand("prl").setExecutor(new ReloadPermissionsCommand());
+		
+	}
+
 }

@@ -2,4 +2,7 @@ name: BuyPermissionsSystem
 version: 1.0.0
 author: ProgrammingPanda
 main: de.programmingpanda.buypermssystem.MainActivity
+description: BuyPermissionsSystem ermöglicht das Kaufen von Permissions, die von Adminds hinzugefügt werden können
 commands:
+   prl:
+      description: Saves and reloads the permissions config

@@ -11,16 +11,33 @@ public class FileManager {
 	private static File permissions = new File("plugins/BuyPermissionsSystem", "PermissionsConfig.yml");
 	private static FileConfiguration permissionsConfiguration;
 
-	public void buidlFiles() {
+	public static void buildFile() {
 		permissionsConfiguration = YamlConfiguration.loadConfiguration(permissions);
-		
-		if(!permissions.exists()) {
+
+		if (!permissions.exists()) {
 			try {
 				permissions.createNewFile();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			
+
+		} else {
+			try {
+				permissionsConfiguration.save(permissions);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+		}
+
+	}
+
+	public static void reloadPermissions() {
+		permissionsConfiguration = YamlConfiguration.loadConfiguration(permissions);
+		try {
+			permissionsConfiguration.save(permissions);
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 
 	}
