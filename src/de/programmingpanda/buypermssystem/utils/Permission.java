@@ -1,5 +1,7 @@
 package de.programmingpanda.buypermssystem.utils;
 
+import java.util.List;
+
 import org.bukkit.Material;
 
 public class Permission {
@@ -8,10 +10,10 @@ public class Permission {
 	private int price;
 	private Material item;
 	private String rang;
-	private String[] worlds;
+	private List<String> worlds;
 	private String server;
 
-	public Permission(String permission, int price, String item, String rang, String server, String... worlds) {
+	public Permission(String permission, int price, String item, String rang, String server, List<String> worlds) {
 		setPermission(permission);
 		setPrice(price);
 		setItem((Material.getMaterial(item) == null) ? Material.STONE : Material.getMaterial(item));
@@ -46,11 +48,11 @@ public class Permission {
 		this.rang = rang;
 	}
 
-	public String[] getWorlds() {
+	public List<String> getWorlds() {
 		return this.worlds;
 	}
 
-	public void setWorlds(String[] worlds) {
+	public void setWorlds(List<String> worlds) {
 		this.worlds = worlds;
 	}
 

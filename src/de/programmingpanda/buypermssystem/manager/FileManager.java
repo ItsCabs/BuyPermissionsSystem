@@ -25,12 +25,12 @@ public class FileManager {
 
 	}
 
-	public File getPermissionsFile() {
+	public static File getPermissionsFile() {
 		return permissions;
 
 	}
 
-	public FileConfiguration getPermissionsConfiguration() {
+	public static FileConfiguration getPermissionsConfiguration() {
 		return permissionsConfiguration;
 	}
 
