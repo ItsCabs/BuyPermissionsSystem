@@ -2,6 +2,7 @@ package de.programmingpanda.buypermssystem;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
+import de.programmingpanda.buypermssystem.commands.BuyPermissionsCommand;
 import de.programmingpanda.buypermssystem.commands.ReloadPermissionsCommand;
 import de.programmingpanda.buypermssystem.manager.FileManager;
 import de.programmingpanda.buypermssystem.utils.Inventorys;
@@ -27,6 +28,7 @@ public class MainActivity extends JavaPlugin {
 
 	private void addCommands() {
 		getCommand("prl").setExecutor(new ReloadPermissionsCommand());
+		getCommand("bp").setExecutor(new BuyPermissionsCommand());
 		
 	}
 
