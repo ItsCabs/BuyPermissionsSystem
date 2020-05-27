@@ -44,24 +44,28 @@ public class ClickInventoryListener implements Listener {
 			} else if (event.getInventory().equals(Inventorys.getConfirmGUI())) {
 				event.setCancelled(true);
 				if (event.getCurrentItem().getType() == Material.GREEN_STAINED_GLASS_PANE) {
-					MainActivity.getEconomy().bankWithdraw(player.getName(),
-							Data.isinconfirmMenu.get(player).getPrice());
-					player.sendMessage("§7[§eBPS§7] §a» §7Du halst erfolgreich die Permissions §6"
-							+ Data.isinconfirmMenu.get(player).getPermission() + " §7gekauft§8!");
-					Data.isinconfirmMenu.remove(player, Data.isinconfirmMenu.get(player));
-					player.closeInventory();
-					player.openInventory(Inventorys.getPermissionsGUI());
+					confirmPurchase(player);
 
 				} else if (event.getCurrentItem().getType() == Material.RED_STAINED_GLASS_PANE) {
 					player.closeInventory();
 					Data.isinconfirmMenu.remove(player, Data.isinconfirmMenu.get(player));
 					player.openInventory(Inventorys.getPermissionsGUI());
-					
+
 				}
 
 			}
 
 		}
+
+	}
+
+	private void confirmPurchase(Player player) {
+		MainActivity.getEconomy().withdrawPlayer(player, Data.isinconfirmMenu.get(player).getPrice());
+		player.sendMessage("§7[§eBPS§7] §a» §7Du halst erfolgreich die Permissions §6"
+				+ Data.isinconfirmMenu.get(player).getPermission() + " §7gekauft§8!");
+		Data.isinconfirmMenu.remove(player, Data.isinconfirmMenu.get(player));
+		player.closeInventory();
+		player.openInventory(Inventorys.getPermissionsGUI());
 
 	}
 
