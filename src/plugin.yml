@@ -2,8 +2,14 @@ name: BuyPermissionsSystem
 version: 1.0.0
 author: ProgrammingPanda
 main: de.programmingpanda.buypermssystem.MainActivity
+api-version: 1.13
 commands:
    prl:
       description: Saves and reloads the permissions config
+      
    bp:
       description: Opens the Permissions GUI
+      
+   addp:
+      description: Adds a permission to the permission config
+      

@@ -3,6 +3,7 @@ package de.programmingpanda.buypermssystem.utils;
 import java.util.List;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
@@ -19,11 +20,23 @@ public class Inventorys {
 	}
 
 	// Fills the permissions GUI with all buyable permissions
-	private static void fillPermissionsGUI() {
+	public static void fillPermissionsGUI() {
 		List<Permission> permissions = PermissionsManager.getPermissions();
 		for (int i = 0; i != permissionsGUI.getSize(); i++) {
-			for (int a = 0; a != permissions.size(); a++)
-				permissionsGUI.setItem(i, new ItemStack(permissions.get(a).getItem()));
+			if (i <= 9 || i >= (9 * 5) - 9) {
+				permissionsGUI.setItem(i, new ItemStack(Material.BLACK_STAINED_GLASS_PANE, 1));
+
+			}
+
+		}
+
+		for (int a = 0; a != permissions.size(); a++) {
+			Permission permission = permissions.get(a);
+			permissionsGUI.setItem(a + 9,
+					new EasyItem(permissions.get(a).getItem(), 1)
+						    .setName("§b" + permission.getPermission())
+							.setLore("§ePreis§7: §6" + permission.getPrice(), "§eRang§7: §6" + permission.getRang(), "§eWelten§7: §6" + permission.getWorlds().toString().replace("[", "").replace("]", ""), "§eServer§7: §6" + permission.getServer())
+							.build());
 
 		}
 

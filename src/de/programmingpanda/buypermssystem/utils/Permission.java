@@ -13,19 +13,18 @@ public class Permission {
 	private List<String> worlds;
 	private String server;
 
-	public Permission(String permission, int price, String item, String rang, String server, List<String> worlds) {
+	public Permission(String permission, int price, String item, String rang, String server, List<String> worldsList) {
 		setPermission(permission);
 		setPrice(price);
 		setItem((Material.getMaterial(item) == null) ? Material.STONE : Material.getMaterial(item));
 		setRang(rang);
 		setServer(server);
-		setWorlds(worlds);
-		
-		
+		setWorlds(worldsList);
+
 	}
 
 	public String getPermission() {
-		return permission;
+		return this.permission;
 	}
 
 	public void setPermission(String permission) {
@@ -52,8 +51,8 @@ public class Permission {
 		return this.worlds;
 	}
 
-	public void setWorlds(List<String> worlds) {
-		this.worlds = worlds;
+	public void setWorlds(List<String> worldsList) {
+		this.worlds = worldsList;
 	}
 
 	public Material getItem() {

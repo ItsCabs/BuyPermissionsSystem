@@ -6,6 +6,8 @@ import java.io.IOException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
+import de.programmingpanda.buypermssystem.utils.Permission;
+
 public class FileManager {
 
 	private static File folder = new File("plugins/BuyPermissionsSystem");
@@ -38,8 +40,19 @@ public class FileManager {
 
 	}
 
+	public static void addPermission(Permission permission) {
+		String prefix = permission.getPermission().replace(".", "") + ".";
+		permissionsConfiguration.set(prefix + "permission", permission.getPermission());
+		permissionsConfiguration.set(prefix + "price", permission.getPrice());
+		permissionsConfiguration.set(prefix + "item", permission.getItem().toString());
+		permissionsConfiguration.set(prefix + "rang", permission.getRang());
+		permissionsConfiguration.set(prefix + "worlds", permission.getWorlds());
+		permissionsConfiguration.set(prefix + "server", permission.getServer());
+		reloadPermissions();
+
+	}
+
 	public static void reloadPermissions() {
-		permissionsConfiguration = YamlConfiguration.loadConfiguration(permissions);
 		try {
 			permissionsConfiguration.save(permissions);
 		} catch (IOException e) {
