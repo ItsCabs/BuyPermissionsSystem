@@ -12,16 +12,15 @@ public class PermissionsManager extends FileManager {
 		ArrayList<Permission> permissions = new ArrayList<>();
 		for (String current : getPermissionsConfiguration().getKeys(false)) {
 			Permission permission = getPermission(current);
-			System.out.println(permission.getPermission());
 			permissions.add(permission);
-			
+
 		}
-		
+
 		return permissions;
 	}
-	
+
 	// Returns a permission out of the permissions Config
-	private static Permission getPermission(String permissionName) {
+	public static Permission getPermission(String permissionName) {
 		String prefix = permissionName + ".";
 		String permissionString = getPermissionsConfiguration().getString(prefix + "permission");
 		int price = getPermissionsConfiguration().getInt(prefix + "price");
@@ -29,8 +28,9 @@ public class PermissionsManager extends FileManager {
 		String rang = getPermissionsConfiguration().getString(prefix + "rang");
 		List<String> worlds = getPermissionsConfiguration().getStringList(prefix + "worlds");
 		String server = getPermissionsConfiguration().getString(prefix + "server");
-		
+
 		return new Permission(permissionString, price, item, rang, server, worlds);
+
 	}
-	
+
 }
