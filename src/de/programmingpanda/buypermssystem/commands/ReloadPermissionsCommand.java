@@ -16,9 +16,13 @@ public class ReloadPermissionsCommand implements CommandExecutor {
 		if (sender.hasPermission("bps.reloadpermissions")) {
 			FileManager.reloadPermissions();
 			Inventorys.fillPermissionsGUI();
+			sender.sendMessage((sender instanceof Player) ? "§7[§eBPS§7] §a» §7Das Plugin wurde erfolgreich neu geladen§8!"
+														  : "[BPS] > Das Plugin wurde erfolgreich neu geladen!");
+
+		} else {
 			sender.sendMessage((sender instanceof Player)
-					? "§7[§eBPS§7] §a» §7Das Plugin wurde erfolgreich neu geladen§8!"
-					: "[BPS] > Das Plugin wurde erfolgreich neu geladen!");
+					? "§7[§eBPS§7] §a» §7Du hast keine Rechte auf diesen Command§8!"
+					: "[BPS] > Du hast keine Rechte auf diesen Command!");
 
 		}
 

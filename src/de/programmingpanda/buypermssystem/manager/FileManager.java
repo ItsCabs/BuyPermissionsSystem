@@ -46,7 +46,7 @@ public class FileManager {
 		permissionsConfiguration.set(prefix + "price", permission.getPrice());
 		permissionsConfiguration.set(prefix + "item", permission.getItem().toString());
 		permissionsConfiguration.set(prefix + "rang", permission.getRang());
-		permissionsConfiguration.set(prefix + "worlds", permission.getWorlds());
+		permissionsConfiguration.set(prefix + "worlds", permission.getWorld());
 		permissionsConfiguration.set(prefix + "server", permission.getServer());
 		reloadPermissions();
 

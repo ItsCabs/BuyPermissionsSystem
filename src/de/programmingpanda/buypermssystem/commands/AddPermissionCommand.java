@@ -1,9 +1,5 @@
 package de.programmingpanda.buypermssystem.commands;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -22,19 +18,17 @@ public class AddPermissionCommand implements CommandExecutor {
 				int price = Integer.valueOf(args[1]);
 				String item = args[2];
 				String rang = args[3];
-				String[] worlds = args[4].substring(args[4].indexOf("[") + 1, args[4].indexOf("]")).split(",");
-				List<String> worldsList = new ArrayList<String>();
-				worldsList = Arrays.asList(worlds);
+				String world = args[4];
 				String server = args[5];
-				Permission permission = new Permission(permissionString, price, item, rang, server, worldsList);
+				Permission permission = new Permission(permissionString, price, item, rang, server, world);
 				FileManager.addPermission(permission);
 
 			} else {
 
-				sender.sendMessage((!(sender instanceof Player))
+				sender.sendMessage(((sender instanceof Player))
 						? "§7[§eBPS§7] §a» §7Wrong Command Usage.(/addp permission price item rang"
-								+ "				 [world1,world2,world3...] server§8!"
-						: "[BPS] > Permissions Config wurde gespeichert und neu geladen!");
+								+ " [world1,world2,world3...] server§8!"
+						: "[BPS] > Wrong Command Usage.(/addp permission price item rang [world1,world2,world3...] server!");
 
 			}
 		}

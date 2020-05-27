@@ -1,7 +1,6 @@
 package de.programmingpanda.buypermssystem.manager;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import de.programmingpanda.buypermssystem.utils.Permission;
 
@@ -26,10 +25,10 @@ public class PermissionsManager extends FileManager {
 		int price = getPermissionsConfiguration().getInt(prefix + "price");
 		String item = getPermissionsConfiguration().getString(prefix + "item");
 		String rang = getPermissionsConfiguration().getString(prefix + "rang");
-		List<String> worlds = getPermissionsConfiguration().getStringList(prefix + "worlds");
+		String world = getPermissionsConfiguration().getString(prefix + "world");
 		String server = getPermissionsConfiguration().getString(prefix + "server");
 
-		return new Permission(permissionString, price, item, rang, server, worlds);
+		return new Permission(permissionString, price, item, rang, server, world);
 
 	}
 

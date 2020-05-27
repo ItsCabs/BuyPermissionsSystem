@@ -27,7 +27,7 @@ public class Inventorys {
 	public static void fillPermissionsGUI() {
 		List<Permission> permissions = PermissionsManager.getPermissions();
 		for (int i = 0; i != permissionsGUI.getSize(); i++) {
-			if (i <= 9 || i >= (9 * 5) - 9) {
+			if (i <= 8 || i >= (9 * 5) - 9) {
 				permissionsGUI.setItem(i, new ItemStack(Material.BLACK_STAINED_GLASS_PANE, 1));
 
 			}
@@ -40,7 +40,7 @@ public class Inventorys {
 					new EasyItem(permissions.get(a).getItem(), 1).setName("§b" + permission.getPermission())
 							.setLore("§ePreis§7: §6" + permission.getPrice(), "§eRang§7: §6" + permission.getRang(),
 									"§eWelten§7: §6"
-											+ permission.getWorlds().toString().replace("[", "").replace("]", ""),
+											+ permission.getWorld().toString().replace("[", "").replace("]", ""),
 									"§eServer§7: §6" + permission.getServer())
 							.build());
 
