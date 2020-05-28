@@ -27,27 +27,45 @@ public class ClickInventoryListener implements Listener {
 				event.setCancelled(true);
 				if (event.getCurrentItem().getType() != Material.BLACK_STAINED_GLASS_PANE) {
 					if (event.getCurrentItem().getType() != Material.AIR) {
-						if (event.getCurrentItem().getItemMeta().getDisplayName().contains(".")) {
+						if (event.getSlot() <= 35 && event.getSlot() >= 9) {
 							Permission currentPermission = PermissionsManager.getPermission(event.getCurrentItem()
 									.getItemMeta().getDisplayName().replace(".", "").substring(2));
+							for (Permission permission : PermissionsManager.getPermissions()) {
+								if (permission.getDisplayName().equalsIgnoreCase(event.getCurrentItem().getItemMeta().getDisplayName().substring(2))) {
+									currentPermission = permission;
+									break;
+								}
 
-							if (MainActivity.getEconomy().getBalance(player.getName()) >= currentPermission
-									.getPrice()) {
-								Data.isinconfirmMenu.put(player, currentPermission);
-								Inventorys.fillconfirmGUI(player);
-								player.openInventory(Inventorys.getConfirmGUI());
-								player.sendMessage("§7[§eBPS§7] §a» §7Du musst nun nur noch den Kauf bestätigen§8!");
+							}
+
+							if (!(player.hasPermission(currentPermission.getPermission()))) {
+								if (player.hasPermission("group." + currentPermission.getGroup())) {
+									if (MainActivity.getEconomy().getBalance(player.getName()) >= currentPermission
+											.getPrice()) {
+										Data.isinconfirmMenu.put(player, currentPermission);
+										Inventorys.fillconfirmGUI(player);
+										player.openInventory(Inventorys.getConfirmGUI());
+										player.sendMessage("§7[§eBPS§7] §a» §7Du musst nun nur noch den Kauf bestätigen§8!");
+
+									} else {
+										player.sendMessage("§7[§eBPS§7] §a» §7Du hast nicht genug Geld für diese Permission§8!");
+
+									}
+
+								} else {
+									player.sendMessage("§7[§eBPS§7] §a» §7Für den Kauf der Permission benötigtst du den Rang§8: §6"+ currentPermission.getGroup() + "§8!");
+
+								}
 
 							} else {
-								player.sendMessage(
-										"§7[§eBPS§7] §a» §7Du hast nicht genug Geld für diese Permission§8!");
+								player.sendMessage("§7[§eBPS§7] §a» §7Du besitzt diese Permission bereits§8!");
 
 							}
 
 						}
 
 					}
-
+					
 				}
 
 			} else if (event.getInventory().equals(Inventorys.getConfirmGUI())) {
@@ -78,8 +96,9 @@ public class ClickInventoryListener implements Listener {
 		// Adding the Permission to the Player
 
 		PermissionNode permissionNode = null;
-		
-		if (currentPermission.getWorld().equalsIgnoreCase("Alle") && currentPermission.getServer().equalsIgnoreCase("Alle")) {
+
+		if (currentPermission.getWorld().equalsIgnoreCase("Alle")
+				&& currentPermission.getServer().equalsIgnoreCase("Alle")) {
 			permissionNode = PermissionNode.builder(currentPermission.getPermission()).build();
 
 		} else if (currentPermission.getWorld().equalsIgnoreCase("Alle")

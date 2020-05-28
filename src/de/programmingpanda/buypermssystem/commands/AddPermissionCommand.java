@@ -20,15 +20,15 @@ public class AddPermissionCommand implements CommandExecutor {
 				String rang = args[3];
 				String world = args[4];
 				String server = args[5];
-				Permission permission = new Permission(permissionString, price, item, rang, server, world);
+				Permission permission = new Permission(permissionString, permissionString, price, item, rang, server, world);
 				FileManager.addPermission(permission);
 
 			} else {
 
 				sender.sendMessage(((sender instanceof Player))
 						? "§7[§eBPS§7] §a» §7Wrong Command Usage.(/addp permission price item rang"
-								+ " [world1,world2,world3...] server§8!"
-						: "[BPS] > Wrong Command Usage.(/addp permission price item rang [world1,world2,world3...] server!");
+								+ " world server)§8!"
+						: "[BPS] > Wrong Command Usage(/addp permission price item rang world server!)");
 
 			}
 		}

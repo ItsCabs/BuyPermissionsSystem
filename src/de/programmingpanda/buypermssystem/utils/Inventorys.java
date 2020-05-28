@@ -37,10 +37,9 @@ public class Inventorys {
 		for (int a = 0; a != permissions.size(); a++) {
 			Permission permission = permissions.get(a);
 			permissionsGUI.setItem(a + 9,
-					new EasyItem(permissions.get(a).getItem(), 1).setName("§b" + permission.getPermission())
-							.setLore("§ePreis§7: §6" + permission.getPrice(), "§eRang§7: §6" + permission.getRang(),
-									"§eWelt§7: §6"+ permission.getWorld(),
-									"§eServer§7: §6" + permission.getServer())
+					new EasyItem(permissions.get(a).getItem(), 1).setName("§b" + permission.getDisplayName())
+							.setLore("§ePreis§7: §6" + permission.getPrice(), "§eRang§7: §6" + permission.getGroup(),
+									"§eWelt§7: §6" + permission.getWorld(), "§eServer§7: §6" + permission.getServer())
 							.build());
 
 		}
@@ -54,11 +53,10 @@ public class Inventorys {
 
 		confirmGUI.setItem(12,
 				new EasyItem(Material.GREEN_STAINED_GLASS_PANE, 1).setName("§aKauf bestätigen")
-						.setLore("§cDer Kauf der Permission " + Data.isinconfirmMenu.get(player).getPermission()," ist nicht mehr rückgängig zu machen§8!")
+						.setLore("§cDer Kauf der Permission " + Data.isinconfirmMenu.get(player).getPermission(),
+								" ist nicht mehr rückgängig zu machen§8!")
 						.build());
-		confirmGUI.setItem(14, new EasyItem(Material.RED_STAINED_GLASS_PANE, 1)
-				.setName("§cKauf abbrechen§8!")
-				.build());
+		confirmGUI.setItem(14, new EasyItem(Material.RED_STAINED_GLASS_PANE, 1).setName("§cKauf abbrechen§8!").build());
 
 	}
 

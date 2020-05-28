@@ -22,13 +22,14 @@ public class PermissionsManager extends FileManager {
 	public static Permission getPermission(String permissionName) {
 		String prefix = permissionName + ".";
 		String permissionString = getPermissionsConfiguration().getString(prefix + "permission");
+		String displayName = getPermissionsConfiguration().getString(prefix + "displayName");
 		int price = getPermissionsConfiguration().getInt(prefix + "price");
 		String item = getPermissionsConfiguration().getString(prefix + "item");
-		String rang = getPermissionsConfiguration().getString(prefix + "rang");
+		String rang = getPermissionsConfiguration().getString(prefix + "group");
 		String world = getPermissionsConfiguration().getString(prefix + "world");
 		String server = getPermissionsConfiguration().getString(prefix + "server");
 
-		return new Permission(permissionString, price, item, rang, server, world);
+		return new Permission(permissionString, displayName, price, item, rang, server, world);
 
 	}
 

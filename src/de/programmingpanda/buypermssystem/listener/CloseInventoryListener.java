@@ -16,8 +16,7 @@ public class CloseInventoryListener implements Listener {
 
 		if (event.getInventory().equals(Inventorys.getConfirmGUI())) {
 			if (Data.isinconfirmMenu.containsKey(player)) {
-				player.sendMessage("§7[§eBPS§7] §a» §7Du hast den Kauf der Permission §6"
-						+ Data.isinconfirmMenu.get(player).getPermission() + " §7abgebrochen§8!");
+				player.sendMessage("§7[§eBPS§7] §a» §7Du hast den Kauf der Permission §6" + Data.isinconfirmMenu.get(player).getGroup() + " §7abgebrochen§8!");
 
 			}
 		}

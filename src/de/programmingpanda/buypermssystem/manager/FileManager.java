@@ -41,13 +41,14 @@ public class FileManager {
 	}
 
 	public static void addPermission(Permission permission) {
-		String prefix = permission.getPermission().replace(".", "") + ".";
-		permissionsConfiguration.set(prefix + "permission", permission.getPermission());
-		permissionsConfiguration.set(prefix + "price", permission.getPrice());
-		permissionsConfiguration.set(prefix + "item", permission.getItem().toString());
-		permissionsConfiguration.set(prefix + "rang", permission.getRang());
-		permissionsConfiguration.set(prefix + "world", permission.getWorld());
-		permissionsConfiguration.set(prefix + "server", permission.getServer());
+		String prefix = permission.getPermission().replace(".", "");
+		permissionsConfiguration.set(prefix + "." + "permission", permission.getPermission());
+		permissionsConfiguration.set(prefix + "." + "displayName", prefix);
+		permissionsConfiguration.set(prefix + "." + "price", permission.getPrice());
+		permissionsConfiguration.set(prefix + "." + "item", permission.getItem().toString());
+		permissionsConfiguration.set(prefix + "." + "group", permission.getGroup());
+		permissionsConfiguration.set(prefix + "." + "world", permission.getWorld());
+		permissionsConfiguration.set(prefix + "." + "server", permission.getServer());
 		reloadPermissions();
 
 	}

@@ -5,17 +5,19 @@ import org.bukkit.Material;
 public class Permission {
 
 	private String permission;
+	private String displayName;
 	private int price;
 	private Material item;
-	private String rang;
+	private String group;
 	private String world;
 	private String server;
 
-	public Permission(String permission, int price, String item, String rang, String server, String world) {
+	public Permission(String permission, String displayName, int price, String item, String group, String server,String world) {
 		setPermission(permission);
+		setDisplayName(displayName);
 		setPrice(price);
 		setItem((Material.getMaterial(item) == null) ? Material.STONE : Material.getMaterial(item));
-		setRang(rang);
+		setGroup(group);
 		setServer(server);
 		setWorld(world);
 
@@ -37,12 +39,12 @@ public class Permission {
 		this.price = price;
 	}
 
-	public String getRang() {
-		return this.rang;
+	public String getGroup() {
+		return this.group;
 	}
 
-	public void setRang(String rang) {
-		this.rang = rang;
+	public void setGroup(String group) {
+		this.group = group;
 	}
 
 	public String getWorld() {
@@ -67,6 +69,14 @@ public class Permission {
 
 	public void setServer(String server) {
 		this.server = server;
+	}
+
+	public String getDisplayName() {
+		return this.displayName;
+	}
+
+	public void setDisplayName(String displayName) {
+		this.displayName = displayName;
 	}
 
 }
