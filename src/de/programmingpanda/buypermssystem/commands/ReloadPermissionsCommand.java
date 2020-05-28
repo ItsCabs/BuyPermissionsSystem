@@ -19,6 +19,7 @@ public class ReloadPermissionsCommand implements CommandExecutor {
 			sender.sendMessage((sender instanceof Player) ? "§7[§eBPS§7] §a» §7Das Plugin wurde erfolgreich neu geladen§8!"
 														  : "[BPS] > Das Plugin wurde erfolgreich neu geladen!");
 
+			
 		} else {
 			sender.sendMessage((sender instanceof Player)
 					? "§7[§eBPS§7] §a» §7Du hast keine Rechte auf diesen Command§8!"

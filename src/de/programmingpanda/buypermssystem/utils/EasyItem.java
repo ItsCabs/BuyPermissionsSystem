@@ -16,7 +16,7 @@ public class EasyItem {
 		easyItemMeta = easyItem.getItemMeta();
 
 	}
-	
+
 	@SuppressWarnings("deprecation")
 	public EasyItem(Material material, Integer amount, byte b) {
 		easyItem = new ItemStack(material, amount, b);
@@ -30,11 +30,8 @@ public class EasyItem {
 		return this;
 
 	}
-	
-	
 
 	public EasyItem setLore(String... lore) {
-
 		easyItemMeta.setLore(Arrays.asList(lore));
 
 		return this;
@@ -45,7 +42,7 @@ public class EasyItem {
 	public EasyItem setColor(short id) {
 		easyItem.getData().setData((byte) id);
 		return this;
-		
+
 	}
 
 	public ItemStack build() {

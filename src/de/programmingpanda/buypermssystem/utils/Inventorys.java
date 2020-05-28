@@ -39,8 +39,7 @@ public class Inventorys {
 			permissionsGUI.setItem(a + 9,
 					new EasyItem(permissions.get(a).getItem(), 1).setName("§b" + permission.getPermission())
 							.setLore("§ePreis§7: §6" + permission.getPrice(), "§eRang§7: §6" + permission.getRang(),
-									"§eWelten§7: §6"
-											+ permission.getWorld().toString().replace("[", "").replace("]", ""),
+									"§eWelt§7: §6"+ permission.getWorld(),
 									"§eServer§7: §6" + permission.getServer())
 							.build());
 

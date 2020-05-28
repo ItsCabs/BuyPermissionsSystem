@@ -1,7 +1,5 @@
 package de.programmingpanda.buypermssystem.listener;
 
-import java.util.ArrayList;
-
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -14,7 +12,6 @@ import de.programmingpanda.buypermssystem.utils.Data;
 import de.programmingpanda.buypermssystem.utils.Inventorys;
 import de.programmingpanda.buypermssystem.utils.Permission;
 import net.luckperms.api.context.DefaultContextKeys;
-import net.luckperms.api.context.ImmutableContextSet;
 import net.luckperms.api.model.user.User;
 import net.luckperms.api.node.types.PermissionNode;
 
